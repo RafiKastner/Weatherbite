@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Data Location App</title>
+</head>
+<body>
+    <h1>Data Location App</h1>
+    <p>
+        latitude: <span id="latitude"></span>&deg;<br/>
+        longitude: <span id="longitude"></span>&deg;
+    </p>
+    <button id="page" onclick="(
+        () => location.pathname = page
+    )()">List of Data</button>
+    <button id="submit">Send Data</button>
+    <script src="main.js"></script>
+</body>
+</html>
