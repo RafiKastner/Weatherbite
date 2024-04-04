@@ -9,19 +9,11 @@ if ("geolocation" in navigator) {
         console.log("geolocation not available");
 }
 
-function setup() {      
-    noCanvas();
-    const video = createCapture(VIDEO)
-    video.size(320,240);
-    submit.addEventListener('click', async event => {
-        position().then(({lat, lon}) => {
-            video.loadPixels()
-            const image = video.canvas.toDataURL();
-            console.log(image);
-            data(lat, lon, image);
-        })
+submit.addEventListener('click', async event => {
+    position().then(({lat, lon}) => {
+        data(lat, lon);
     })
-}
+})
 
 function position() {
     return new Promise((resolve) => {
@@ -35,8 +27,8 @@ function position() {
     })
 }
 
-async function data(lat, lon, image) {
-    const data = {lat, lon, image}
+async function data(lat, lon) {
+    const data = {lat, lon}
     const options = {
         method: 'POST',
         headers: {
@@ -46,5 +38,4 @@ async function data(lat, lon, image) {
     }
     const response = await fetch('/api', options);
     const json = await response.json();
-    console.log(json)
 }
