@@ -28,23 +28,18 @@ function position() {
             const response = await fetch(api_url);
             const json = await response.json();
             console.log(json)
-            console.log(date)
 
             const path = json.timelines.minutely[0].values;
-            
-            const weatherJson = await fetch("weathercodes.json");
-            const weatherCodesJson = await weatherJson.json();
+            const weatherFetch = await fetch("weathercodes.json");
+            const weatherCodesJson = await weatherFetch.json();
             const weatherCode = path.weatherCode;
             let weather;
-
             for (i in weatherCodesJson.weatherCode) {
                 if (weatherCode == i) {
                     weather = weatherCodesJson.weatherCode[i];
                 }
-            }
-            
+            }    
             document.getElementById("summary").textContent = weather.toLowerCase();
-
             const temperature = path.temperature;
             document.getElementById("temperature").textContent = temperature;
             resolve({lat, lon});
