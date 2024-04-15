@@ -9,8 +9,8 @@ if ("geolocation" in navigator) {
     console.log("geolocation available")
     position();
     submit.addEventListener('click', async event => {
-        position().then(({lat, lon}) => {
-            data(lat, lon);
+        position().then((data) => {
+            sendData(data);
         })
     })
 } else {
@@ -42,13 +42,13 @@ function position() {
             document.getElementById("summary").textContent = weather.toLowerCase();
             const temperature = path.temperature;
             document.getElementById("temperature").textContent = temperature;
-            resolve({lat, lon});
+            data = {lat, lon, temperature, weather};
+            resolve(data);
         })
     })
 }
 
-async function data(lat, lon) {
-    const data = {lat, lon}
+async function sendData(data) {
     const options = {
         method: 'POST',
         headers: {
