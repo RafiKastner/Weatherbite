@@ -41,11 +41,17 @@ function position() {
             }    
             document.getElementById("summary").textContent = weather.toLowerCase();
             const temperature = path.temperature;
-            document.getElementById("temperature").textContent = temperature;
+            const fahrenheit = toFahrenheit(temperature);
+            document.getElementById("temperature").textContent = fahrenheit;
             data = {lat, lon, temperature, weather};
             resolve(data);
         })
     })
+}
+
+function toFahrenheit(temp) {
+    const places = 100
+    return Math.round(temp * places * 9 / 2 + 32)/places;
 }
 
 async function sendData(data) {
