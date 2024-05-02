@@ -18,9 +18,12 @@ async function getData() {
     const data = await response.json();
     console.log(data)
     for (item of data) {
-        L.marker([item.lat, item.lon]).addTo(map);
+        const marker = L.marker([item.lat, item.lon]).addTo(map);
+        const text = `The weather at ${item.lat}&deg;, ${item.lat}&deg;
+        is ${item.weather.toLowerCase()} with a temperature of ${item.fahrenheit} &deg;F.`
+        marker.bindPopup(text);
 
-        // {
+        // { displaying info
         // const root = document.createElement('div');
         // const geo = document.createElement('div');
         // const date = document.createElement('div');
