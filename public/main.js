@@ -43,7 +43,7 @@ function position() {
             const temperature = path.temperature;
             const fahrenheit = toFahrenheit(temperature);
             document.getElementById("temperature").textContent = fahrenheit;
-            data = {lat, lon, temperature, weather};
+            data = {lat, lon, temperature, fahrenheit, weather};
             resolve(data);
         })
     })
@@ -64,4 +64,5 @@ async function sendData(data) {
     }
     const response = await fetch('/api', options);
     const json = await response.json();
+    console.log(json)
 }
