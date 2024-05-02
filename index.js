@@ -1,6 +1,7 @@
 const express = require('express');
 const Datastore = require('nedb');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 const app = express();
 app.listen(3000, () => console.log('listening at 3000'));
@@ -31,7 +32,7 @@ app.get('/weather/:latlon', async (request, response) => {
     const lat = latlon[0];
     const lon = latlon[1];
     console.log(lat,lon);
-    const api_url = `https://api.tomorrow.io/v4/weather/forecast?location=${lat},${lon}&apikey=R0w2hiuMUFGLlOlKPxiNnf6b45UahENy`
+    const api_url = `https://api.tomorrow.io/v4/weather/forecast?location=${lat},${lon}&apikey=${process.env.API_KEY}`
     const fetch_response = await fetch(api_url);
     const json = await fetch_response.json();
     response.json(json);
