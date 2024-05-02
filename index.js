@@ -22,11 +22,7 @@ app.post('/api', (request, response) => {
     const timestamp = Date.now()
     data.timestamp = timestamp;
     database.insert(data);
-    response.json({
-        status : 'success',
-        latitude: data.lat,
-        longitude : data.lon,
-    })
+    response.json(data)
 });
 
 app.get('/weather/:latlon', async (request, response) => {
