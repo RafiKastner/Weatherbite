@@ -2,10 +2,10 @@
   "name": "modeule3.1",
   "version": "1.0.0",
   "description": "Weather location app",
-  "main": "index.js",
+  "main": "back-end/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "back-end/node index.js"
   },
   "author": "Rafi Kastner",
   "license": "MIT",
