@@ -42,6 +42,8 @@ function position() {
             document.getElementById("summary").textContent = weather.toLowerCase();
             const temperature = path.temperature;
             const fahrenheit = toFahrenheit(temperature);
+            console.log(temperature);
+
             document.getElementById("temperature").textContent = fahrenheit;
             data = {lat, lon, temperature, fahrenheit, weather};
             resolve(data);
@@ -51,7 +53,8 @@ function position() {
 
 function toFahrenheit(temp) {
     const places = 100
-    return Math.round(temp * places * 9 / 2 + 32)/places;
+    const f = temp * 9 / 5 + 32 
+    return Math.round(f * places)/places;
 }
 
 async function sendData(data) {
