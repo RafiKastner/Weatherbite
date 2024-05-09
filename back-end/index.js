@@ -14,7 +14,7 @@ const database = new Datastore('database.db');
 database.loadDatabase();
 
 app.get('/', function (request, response) {
-    response.sendFile(path.join(_durname + "index.html"))
+    response.sendFile("index.html")
 });
 
 app.get('/api', (request, response) => {
