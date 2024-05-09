@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
-app.use('/', express.static(path.join(__dirname, 'dist')))
+app.use(express.static('dist'));
 app.use(express.json({ limit: '1mb' }));
 
 const database = new Datastore('database.db');
