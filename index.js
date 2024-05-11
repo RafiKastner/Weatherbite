@@ -21,7 +21,6 @@ database.loadDatabase();
 
 app.get('/api', (request, response) => {
     database.find({}, (err, data) => {
-        data.port = port;
         response.json(data);
     })
 });
@@ -32,6 +31,7 @@ app.post('/api', (request, response) => {
     const timestamp = Date.now()
     data.timestamp = timestamp;
     database.insert(data);
+    data.port = port;
     response.json(data)
 });
 
