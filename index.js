@@ -9,7 +9,11 @@ const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
 app.use(express.static('public'));
-app.use(cors());
+var corsOptions = {
+    origin: 'http://example.com',
+    optionSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '1mb' }));
 
 const database = new Datastore('database.db');
