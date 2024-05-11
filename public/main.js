@@ -65,7 +65,7 @@ async function sendData(data) {
         },
         body: JSON.stringify(data)
     }
-    const response = await fetch('/api', options);
+    const response = await fetch('https://weatherbite-503720fac0d5.herokuapp.com/api', options);
     const json = await response.json();
     console.log(json)
 }

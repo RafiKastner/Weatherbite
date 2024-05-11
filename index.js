@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const Datastore = require('nedb');
 const fetch = require('node-fetch');
 require('dotenv').config();
@@ -8,6 +9,7 @@ const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
 app.use(express.static('public'));
+app.use(cors());
 app.use(express.json({ limit: '1mb' }));
 
 const database = new Datastore('database.db');
