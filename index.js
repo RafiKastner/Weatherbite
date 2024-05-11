@@ -13,7 +13,6 @@ var corsOptions = {
     origin: 'http://example.com',
     optionSuccessStatus: 200
 }
-console.log(port)
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '1mb' }));
 
@@ -22,6 +21,7 @@ database.loadDatabase();
 
 app.get('/api', (request, response) => {
     database.find({}, (err, data) => {
+        data.port = port;
         response.json(data);
     })
 });
