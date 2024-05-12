@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
 app.use(express.static('public'));
-const whitelist = process.env.WHITE_LIST
+const whitelist = process.env.CORS_WHITELIST
 var corsOptions = {
     origin: function(origin, callback) {
         if (whitelist.indexOf(origin) !== 1) {
