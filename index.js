@@ -9,8 +9,15 @@ const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
 app.use(express.static('public'));
+const whitelist = process.env.WHITE_LIST
 var corsOptions = {
-    origin: 'http://example.com',
+    origin: function(origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    },
     optionSuccessStatus: 200
 }
 app.use(cors(corsOptions));
@@ -31,7 +38,6 @@ app.post('/api', (request, response) => {
     const timestamp = Date.now()
     data.timestamp = timestamp;
     database.insert(data);
-    data.port = port;
     response.json(data)
 });
 
