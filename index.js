@@ -1,8 +1,12 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 const Datastore = require('nedb');
 const fetch = require('node-fetch');
 require('dotenv').config();
+
+const { MongoClient } = require('mongodb')
+const uri = `mongodb+srv://rafikastner:${process.env.MONGODB_PASS}>@weatherbite.hasmell.mongodb.net/?retryWrites=true&w=majority&appName=Weatherbite`;
+const client = new MongoClient(uri);
 
 const app = express();
 const port = process.env.PORT || 3000;
