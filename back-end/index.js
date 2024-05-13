@@ -4,7 +4,7 @@ const Datastore = require('nedb');
 const fetch = require('node-fetch');
 require('dotenv').config();
 
-const { MongoClient } = require('mongodb')
+const { MongoClient } = require('mongodb');
 const uri = `mongodb+srv://rafikastner:${process.env.MONGODB_PASS}>@weatherbite.hasmell.mongodb.net/?retryWrites=true&w=majority&appName=Weatherbite`;
 const client = new MongoClient(uri);
 
@@ -13,13 +13,13 @@ const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
 app.use(express.static('public'));
-const whitelist = process.env.CORS_WHITELIST
+const whitelist = process.env.CORS_WHITELIST;
 var corsOptions = {
     origin: function(origin, callback) {
         if (whitelist.indexOf(origin) !== 1) {
-            callback(null, true)
+            callback(null, true);
         } else {
-            callback(new Error('Not allowed by CORS'))
+            callback(new Error('Not allowed by CORS'));
         }
     },
     optionSuccessStatus: 200
@@ -39,14 +39,14 @@ app.get('/api', (request, response) => {
 app.post('/api', (request, response) => {
     console.log(request.body);
     const data = request.body;
-    const timestamp = Date.now()
+    const timestamp = Date.now();
     data.timestamp = timestamp;
     database.insert(data);
-    response.json(data)
+    response.json(data);
 });
 
 app.get('/weather/:latlon', async (request, response) => {
-    console.log(request)
+    console.log(request);
     const latlon = request.params.latlon.split(',');
     const lat = latlon[0];
     const lon = latlon[1];
