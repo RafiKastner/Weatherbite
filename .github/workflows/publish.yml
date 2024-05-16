@@ -1,0 +1,39 @@
+on: push
+name: Publish on Sites
+
+jobs:
+  netlify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    
+    - name: Duplicate Package.json
+      run: |
+        cp package.json front-end
+        cp package-lock.json front-end
+        
+    - name: Publish to Netlify
+      uses: netlify/actions/build@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_DIR: /front-end
+        
+  # render:
+    # runs-on: ubuntu-latest
+
+    # steps:
+    # - uses: actions/checkout@master
+    
+    # - name: Duplicate Package.json
+    #   run: |
+    #     cp package.json back-end
+    #     cp package-lock.json back-end
+        
+    # - name: Publish to Render
+    #   uses: netlify/actions/build@master
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    #     NETLIFY_DIR: /front-end
