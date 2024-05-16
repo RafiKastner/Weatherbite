@@ -10,8 +10,8 @@ jobs:
     
     - name: Duplicate Package.json
       run: |
-        cp [package.json] [front-end]
-        cp [package-lock.json] [front-end]
+        cp package.json front-end
+        cp package-lock.json front-end
         
     - name: Publish to Netlify
       uses: netlify/actions/build@master
@@ -28,12 +28,13 @@ jobs:
     
     - name: Duplicate Package.json
       run: |
-        cp [package.json] [front-end]
-        cp [package-lock.json] [front-end]
+        cp package.json back-end
+        cp package-lock.json back-end
         
     - name: Publish to Render
       uses: netlify/actions/build@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_DIR: /front-end
     
