@@ -6,13 +6,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
-    
-    - name: Duplicate Package.json
-      run: |
-        cp package.json front-end
-        cp package-lock.json front-end
-        
     - name: Publish to Netlify
       uses: netlify/actions/build@master
       env:
