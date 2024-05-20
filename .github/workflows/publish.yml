@@ -7,20 +7,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # - name: Checkout repository
-    #   uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    # - name: Install Node.js
-    #   uses: actions/setup-node@v2
-    #   with:
-    #     node-version: '21.7.1'
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '21.7.1'
 
-    # - name: Install dependencies
-    #   run: npm install
-    #   working-directory: front-end
+    - name: Install dependencies
+      run: npm install
+      working-directory: front-end
 
-    # - name: Build
-    #   run: npm run build
+    - name: Build
+      run: npm run build
 
     - name: Deploy to Netlify
       env:
