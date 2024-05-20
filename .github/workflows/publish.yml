@@ -5,9 +5,24 @@ jobs:
   netlify:
     name: Publish to Netlify
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: netlify/actions/build@master
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Specify the Node.js version you need
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build  # Adjust this to your build script
+
+    - name: Deploy to Netlify
       env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      run: npx netlify-cli deploy --prod --dir=public  # Adjust the --dir parameter to your build output directory
