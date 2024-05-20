@@ -20,8 +20,5 @@
   "bugs": {
     "url": "https://github.com/RafiKastner/Weatherbite/issues"
   },
-  "homepage": "https://github.com/RafiKastner/Weatherbite#readme",
-  "dependencies": {
-    "netlify": "^13.1.16"
-  }
+  "homepage": "https://github.com/RafiKastner/Weatherbite#readme"
 }
