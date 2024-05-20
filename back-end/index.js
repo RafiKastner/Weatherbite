@@ -1,18 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 const Datastore = require('nedb');
-const fetch = require('node-fetch');
+import('node-fetch');
+const path = require('path');
 require('dotenv').config();
 
 const { MongoClient } = require('mongodb');
-const uri = `mongodb+srv://rafikastner:${process.env.MONGODB_PASS}>@weatherbite.hasmell.mongodb.net/?retryWrites=true&w=majority&appName=Weatherbite`;
-const client = new MongoClient(uri);
+const url = `mongodb+srv://rafikastner:${process.env.MONGODB_PASS}>@weatherbite.hasmell.mongodb.net/?retryWrites=true&w=majority&appName=Weatherbite`;
+const client = new MongoClient(url);
 
 const app = express();
 const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
-app.use(express.static('public'));
+app.use(express.static('../front-end'));
 const whitelist = process.env.CORS_WHITELIST;
 var corsOptions = {
     origin: function(origin, callback) {
