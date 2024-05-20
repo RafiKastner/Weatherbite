@@ -7,22 +7,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    # - name: Checkout repository
+    #   uses: actions/checkout@v2
 
-    - name: Install Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'  # Specify the Node.js version you need
+    # - name: Install Node.js
+    #   uses: actions/setup-node@v2
+    #   with:
+    #     node-version: '21.7.1'
 
-    - name: Install dependencies
-      run: npm install
+    # - name: Install dependencies
+    #   run: npm install
+    #   working-directory: front-end
 
-    - name: Build
-      run: npm run build  # Adjust this to your build script
+    # - name: Build
+    #   run: npm run build
 
     - name: Deploy to Netlify
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-      run: npx netlify-cli deploy --prod --dir=public  # Adjust the --dir parameter to your build output directory
+      run: curl -X POST -d {} curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK }}
