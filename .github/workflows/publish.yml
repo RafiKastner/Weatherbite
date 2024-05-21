@@ -10,21 +10,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Switch directory
-      run: cd front-end
-      
-    - name: Install Node.js
-      uses: actions/setup-node@v2
+    - name: Build
+      uses: actions/setup-node@2
       with:
-        node-version: '21.7.1'
-
-    # - name: Install dependencies
-    #   run: npm install
+        node-version: 21
 
     - name: Deploy to Netlify
-      uses: netlify/actions/cli@master
-      with:
-        args: deploy --dir=site --functions=functions
+      run: npx netlify-cli deploy--build --prod --dir=./front-end
       env:
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
