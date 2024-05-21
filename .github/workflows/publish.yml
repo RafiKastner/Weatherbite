@@ -10,17 +10,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    # - name: Install Node.js
-    #   uses: actions/setup-node@v2
-    #   with:
-    #     node-version: '21.7.1'
+    - name: Switch directory
+      run: cd front-end
+      
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '21.7.1'
 
-    # - name: Install dependencies
-    #   run: npm install
-    #   working-directory: front-end
-
-    # - name: Build
-    #   run: npm run build
+    - name: Install dependencies
+      run: npm install
 
     - name: Deploy to Netlify
       uses: netlify/actions/cli@master
