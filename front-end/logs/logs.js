@@ -14,7 +14,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 getData();
 async function getData() {
-    const response = await fetch('https://weatherbite-503720fac0d5.herokuapp.com/api');
+    const response = await fetch(`https://weatherbite.onrender.com/api`);
     const data = await response.json();
     console.log(data)
     for (item of data) {
