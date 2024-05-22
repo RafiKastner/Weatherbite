@@ -10,6 +10,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Install dependencies
+      run: |
+        cd front-end
+        npm install netlify-cli
+
     - name: Deploy to Netlify
       run: npx netlify-cli deploy--build --prod --dir=./front-end
       env:
