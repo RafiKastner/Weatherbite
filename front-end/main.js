@@ -1,5 +1,6 @@
 const page = "/logs/index.html";
 const submit = document.getElementById("submit");
+const server_url = (typeof process !== 'undefined' && process.env.SERVER_URL) || '';
 
 const date = new Date()
 const dateTable = date.toString().match(/\b(\w+)\b/g)
@@ -24,7 +25,7 @@ function position() {
             const lon = position.coords.longitude
             document.getElementById("latitude").textContent = lat;
             document.getElementById("longitude").textContent = lon;
-            const api_url = `/weather/${lat},${lon}`;
+            const api_url = `${server_url}/weather/${lat},${lon}`;
             const response = await fetch(api_url);
             const json = await response.json();
             console.log(json)
@@ -65,7 +66,7 @@ async function sendData(data) {
         },
         body: JSON.stringify(data)
     }
-    const response = await fetch('https://weatherbite-503720fac0d5.herokuapp.com/api', options);
+    const response = await fetch(`${server_url}/api`, options);
     const json = await response.json();
     console.log(json)
 }
