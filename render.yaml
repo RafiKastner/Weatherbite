@@ -2,7 +2,6 @@ services:
   - type: web
     name: Weatherbite
     env: node
-    region: oregon
     plan: free
     branch: main
     buildCommand: cd back-end && npm install
