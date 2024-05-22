@@ -13,7 +13,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
-app.use(express.static(process.env.EXPRESS_DIRECTORY));
+app.use(express.static('../front-end'));
 const whitelist = process.env.CORS_WHITELIST;
 var corsOptions = {
     origin: function(origin, callback) {
