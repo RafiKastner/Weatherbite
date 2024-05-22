@@ -5,15 +5,17 @@ import('node-fetch');
 const path = require('path');
 require('dotenv').config();
 
-//const { MongoClient } = require('mongodb');
-const url = `mongodb+srv://rafikastner:${process.env.MONGODB_PASS}>@weatherbite.hasmell.mongodb.net/?retryWrites=true&w=majority&appName=Weatherbite`;
-//const client = new MongoClient(url);
+// const { MongoClient } = require('mongodb');
+// const url = `mongodb+srv://rafikastner:${process.env.MONGODB_PASS}>@weatherbite.hasmell.mongodb.net/?retryWrites=true&w=majority&appName=Weatherbite`;
+// const client = new MongoClient(url);
 
 const app = express();
 const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
-app.use(express.static('../front-end'));
+let dir = '../front-end'
+if (process.env.NODE_ENV == 'production') dir = '';
+app.use(express.static(dir));
 const whitelist = process.env.CORS_WHITELIST;
 var corsOptions = {
     origin: function(origin, callback) {
