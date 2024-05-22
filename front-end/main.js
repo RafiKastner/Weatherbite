@@ -1,6 +1,9 @@
 const page = "/logs/index.html";
 const submit = document.getElementById("submit");
-const server_url = 'https://weatherbite.onrender.com';
+let server_url = 'https://weatherbite.onrender.com'; 
+if (window.location.hostname === 'localhost') {
+    server_url = ''
+}
 
 const date = new Date()
 const dateTable = date.toString().match(/\b(\w+)\b/g)

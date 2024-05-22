@@ -5,9 +5,9 @@ import('node-fetch');
 const path = require('path');
 require('dotenv').config();
 
-// const { MongoClient } = require('mongodb');
-// const url = `mongodb+srv://rafikastner:${process.env.MONGODB_PASS}>@weatherbite.hasmell.mongodb.net/?retryWrites=true&w=majority&appName=Weatherbite`;
-// const client = new MongoClient(url);
+const { MongoClient } = require('mongodb');
+const url = `mongodb+srv://rafikastner:${process.env.MONGODB_PASS}>@weatherbite.hasmell.mongodb.net/?retryWrites=true&w=majority&appName=Weatherbite`;
+const client = new MongoClient(url);
 
 const app = express();
 const port = process.env.PORT || 3000;

@@ -21,7 +21,7 @@
     "url": "https://github.com/RafiKastner/Weatherbite/issues"
   },
   "homepage": "https://github.com/RafiKastner/Weatherbite#readme",
-  "dependencies": {
+  "devDependencies": {
     "netlify-cli": "^17.23.5"
   }
 }
