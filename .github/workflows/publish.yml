@@ -16,7 +16,9 @@ jobs:
         npm install netlify-cli
 
     - name: Deploy to Netlify
-      run: npx netlify-cli deploy--build --prod --dir=./front-end
+      run: |
+        cd front-end
+        npx netlify-cli deploy --build --prod
       env:
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
