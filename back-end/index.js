@@ -13,9 +13,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 console.log(port);
 app.listen(port, () => console.log(`listening at ${port}`));
-let dir = '../front-end'
-if (process.env.NODE_ENV == 'production') dir = '';
-app.use(express.static(dir));
+if (process.env.NODE_ENV == 'development') {
+    app.use(express.static('../front-end'));
+}
 const whitelist = process.env.CORS_WHITELIST;
 var corsOptions = {
     origin: function(origin, callback) {
