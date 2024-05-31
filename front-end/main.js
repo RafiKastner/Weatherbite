@@ -28,7 +28,7 @@ function position() {
             const lon = position.coords.longitude
             document.getElementById("latitude").textContent = lat;
             document.getElementById("longitude").textContent = lon;
-            const api_url = `${server_url}/.netlify/functions/weather.mjs?cords=${lat},${lon}`;
+            const api_url = `${server_url}/netlify/functions/weather.mjs?cords=${lat},${lon}`;
             const response = await fetch(api_url);
             const json = await response.json();
             console.log(json)
