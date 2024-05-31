@@ -1,6 +1,6 @@
 const page = "/logs/index.html";
 const submit = document.getElementById("submit");
-let server_url = 'https://weatherbite.onrender.com'; 
+let server_url = 'https://weatherbite.netlify.app'; 
 if (window.location.hostname === 'localhost') {
     server_url = ''
 }
@@ -28,11 +28,10 @@ function position() {
             const lon = position.coords.longitude
             document.getElementById("latitude").textContent = lat;
             document.getElementById("longitude").textContent = lon;
-            const api_url = `${server_url}/weather/${lat},${lon}`;
+            const api_url = `${server_url}/.netlify/functions/weather.mjs?cords=${lat},${lon}`;
             const response = await fetch(api_url);
             const json = await response.json();
             console.log(json)
-
             const path = json.timelines.minutely[0].values;
             const weatherFetch = await fetch("weathercodes.json");
             const weatherCodesJson = await weatherFetch.json();

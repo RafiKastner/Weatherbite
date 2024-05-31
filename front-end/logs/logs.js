@@ -1,5 +1,9 @@
 const page = 'index.html'
 const api_url = 'https://api.wheretheiss.at/v1/satellites/25544'
+let server_url = 'https://weatherbite.onrender.com'; 
+if (window.location.hostname === 'localhost') {
+    server_url = ''
+}
 const bounds = L.latLngBounds(L.latLng(-85, Infinity), L.latLng(85, -Infinity));
 const map = L.map('map', {
     minZoom: 2,
@@ -14,7 +18,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 getData();
 async function getData() {
-    const response = await fetch(`https://weatherbite.onrender.com/api`);
+    const response = await fetch(`${server_url}/api`);
     const data = await response.json();
     console.log(data)
     for (item of data) {
