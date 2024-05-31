@@ -30,6 +30,7 @@ function position() {
             document.getElementById("longitude").textContent = lon;
             const api_url = `${server_url}/netlify/functions/weather.mjs?cords=${lat},${lon}`;
             const response = await fetch(api_url);
+            comsolr.log('response; ',response)
             const json = await response.json();
             console.log(json)
             const path = json.timelines.minutely[0].values;
