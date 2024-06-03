@@ -5,6 +5,7 @@ export default async (event, context) => {
         const api_url = `https://api.tomorrow.io/v4/weather/forecast?location=${lat},${lon}&apikey=${process.env.TOMORROW_IO_KEY}`
         const fetch_response = await fetch(api_url);
         const json = await fetch_response.json();
+        json.context = context;
         return Response.json(json)
     } catch (error) {
         console.log('error', error);
