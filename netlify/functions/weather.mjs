@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 export default async (event, context) => {
     try {
         const lat = context.geo.latitude;
@@ -6,6 +8,7 @@ export default async (event, context) => {
         const fetch_response = await fetch(api_url);
         const json = await fetch_response.json();
         json.context = context;
+        
         return Response.json(json)
     } catch (error) {
         console.log('error', error);

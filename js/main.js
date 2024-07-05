@@ -1,13 +1,11 @@
-const page = "/logs/index.html";
-const submit = document.getElementById("submit");
 let server_url = 'https://weatherbite.netlify.app'; 
 if (window.location.hostname === 'localhost') {
     server_url = ''
 }
 
-const date = new Date()
-const dateTable = date.toString().match(/\b(\w+)\b/g)
-document.getElementById("date").textContent = `${dateTable[0]} ${dateTable[1]} ${dateTable[2]}`;
+// const date = new Date()
+// const dateTable = date.toString().match(/\b(\w+)\b/g)
+// document.getElementById("date").textContent = `${dateTable[0]} ${dateTable[1]} ${dateTable[2]}`;
 
 if ("geolocation" in navigator) {
     console.log("geolocation available")
@@ -18,12 +16,15 @@ if ("geolocation" in navigator) {
 
 function position() {
     return new Promise(async (resolve) => {
+        const imgFolder = await fetch('../images/png/')
+        console.log(imgFolder)
+
         const api_url = `${server_url}/.netlify/functions/weather`
         const response = await fetch(api_url);
         const json = await response.json();
         console.log(json)
         const path = json.timelines.minutely[0].values;
-        const weatherFetch = await fetch("weathercodes.json");
+        const weatherFetch = await fetch("../js/weathercodes.json");
         const weatherCodesJson = await weatherFetch.json();
 
         const weatherCode = path.weatherCode;
@@ -37,12 +38,14 @@ function position() {
         const temperature = path.temperature;
         const fahrenheit = toFahrenheit(temperature);
 
+        document.getElementById("weather-icon").src = `../images/large/${weatherCode}0_large.png`;
+
         const lat = json.context.geo.latitude
         const lon = json.context.geo.longitude
         document.getElementById("latitude").textContent = lat;
         document.getElementById("longitude").textContent = lon;
 
-        document.getElementById("temperature").textContent = fahrenheit;
+        //document.getElementById("temperature").textContent = fahrenheit;
         data = {lat, lon, temperature, fahrenheit, weather};
         resolve(data);
     })
