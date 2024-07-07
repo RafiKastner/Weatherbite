@@ -6,22 +6,34 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Weather Tracker</title>
 </head>
-<header>
-    <div class="container-indent">
-        <h1 class="header-info">Weatherbite</h1>
-        <p class="header-info">
-            Latitude: <span id="latitude"><i>Unknown</i></span>&deg;
-            Longitude: <span id="longitude"><i>Unknown</i></span>&deg;
-        </p>
-    </div>
-</header>
-<body>
-    <div>
-        <img id="weather-icon" src="images/large/10000_large.png" alt="Weather icon">
-        <p class="information"> The weather is
-            <span id="summary"></span>
-        </p>
-    </div>
+<body id='body' class="dark-mode">
+    <header class="flex">
+        <div class="title-container space-above">
+            <h1 class="header-info">Weatherbite</h1>
+            <div class="header-info">
+                <span>Latitude: <span id="latitude"><i>Unknown</i></span>&deg;</span>
+                <span>Longitude: <span id="longitude"><i>Unknown</i></span>&deg;</span>
+            </div>
+        </div>
+        <nav class="nav space-right space-above">
+            <button class="dark-mode-switch"
+                onclick="document.getElementById('body').classList.toggle('dark-mode')">
+                Dark mode
+            </button>
+            <form class="search-form" action="">
+                <input class="search" type="text" size="100" placeholder="Search location">
+            </form>
+        </nav>
+    </header>
+    <br>
+    <main>
+        <section class="indent">
+            <img id="weather-icon" src="images/large/10000_large.png" alt="Weather icon">
+            <p class="information"> The weather is
+                <span id="summary"></span>
+            </p>
+        </section>
+    </main>
     <script src="js/main.js"></script>
 </body>
 </html>

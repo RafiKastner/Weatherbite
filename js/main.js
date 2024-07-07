@@ -16,9 +16,6 @@ if ("geolocation" in navigator) {
 
 function position() {
     return new Promise(async (resolve) => {
-        const imgFolder = await fetch('../images/png/')
-        console.log(imgFolder)
-
         const api_url = `${server_url}/.netlify/functions/weather`
         const response = await fetch(api_url);
         const json = await response.json();
@@ -38,7 +35,7 @@ function position() {
         const temperature = path.temperature;
         const fahrenheit = toFahrenheit(temperature);
 
-        document.getElementById("weather-icon").src = `../images/large/${weatherCode}0_large.png`;
+        document.getElementById("weather-icon").src = `../images/weather/large/${weatherCode}0_large.png`;
 
         const lat = json.context.geo.latitude
         const lon = json.context.geo.longitude
