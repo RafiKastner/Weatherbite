@@ -13,6 +13,7 @@
 .flex {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .indent {
@@ -29,8 +30,6 @@
 
 .title-container {
     margin: 0 1rem 0 0;
-    position: relative;
-    left: 5vw;
 }
 
 /* header */
@@ -45,13 +44,13 @@ div.header-info {
 
 /* nav */
 .nav {
-    width: 100%;
+    flex: 1;
     height: 10%;
     display: flex;
     justify-content: flex-end;
-/*     background: linear-gradient(to left, rgba(28, 28, 28, 0.363) 68vw, transparent 71vw);
- */    border: 1px gainsboro solid;
-    border-image: linear-gradient(to left, rgb(220, 220, 220) 40vw, transparent 77vw) 100% 1;;
+/*  background: linear-gradient(to left, rgba(28, 28, 28, 0.363) 68vw, transparent 71vw); */
+    border: 1px gainsboro solid;
+    border-image: linear-gradient(to left, rgb(220, 220, 220) 60%, transparent 100%) 100% 1;;
     border-width: 0 0 1px 0;
 }
 
