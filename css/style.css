@@ -49,8 +49,8 @@ div.header-info {
     height: 10%;
     display: flex;
     justify-content: flex-end;
-    background: linear-gradient(to left, rgba(28, 28, 28, 0.363) 68vw, transparent 71vw);
-    border: 1px gainsboro solid;
+/*     background: linear-gradient(to left, rgba(28, 28, 28, 0.363) 68vw, transparent 71vw);
+ */    border: 1px gainsboro solid;
     border-image: linear-gradient(to left, rgb(220, 220, 220) 40vw, transparent 77vw) 100% 1;;
     border-width: 0 0 1px 0;
 }
